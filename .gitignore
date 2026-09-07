@@ -1,0 +1,10 @@
+.venv/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+backend/db.sqlite3
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.DS_Store

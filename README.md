@@ -1,39 +1,44 @@
-# Календарь звонков
+### Hexlet tests and CI status:
 
+[![Actions Status](https://github.com/apriakhin/python-project-386/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/apriakhin/python-project-386/actions)
+[![CI Status](https://github.com/apriakhin/python-project-386/actions/workflows/ci.yml/badge.svg)](https://github.com/apriakhin/python-project-386/actions/workflows/ci.yml)
 
-[![hexlet-check](https://github.com/apriakhin/python-project-386/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/apriakhin/python-project-386/actions)
+# Call Calendar
 
-Разработайте совместно с ИИ сервис для бронирования календаря
+Call Calendar is a web application for booking calls. It consists of a Django
+backend and a React frontend.
 
-Учебный проект Хекслета: https://ru.hexlet.io/programs/python
-Как это должно работать: https://files.hexlet.app/a/2ipc5m
+## Install
 
-## Стек
+Python 3.12, [uv](https://docs.astral.sh/uv/), Node.js, and npm are required.
 
-- Разное
+Copy and run the commands below in the terminal:
 
-## Установка
-
-<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
-
-```bash
+```sh
 git clone https://github.com/apriakhin/python-project-386.git
 cd python-project-386
+make install
 ```
 
-## Использование
+## Usage
 
-<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
+Start the backend and frontend development servers:
 
----
+```sh
+make start
+```
 
-<details>
-<summary>Автоматические тесты Хекслета</summary>
+Open [http://localhost:5173](http://localhost:5173) in a browser. The backend
+smoke endpoint is available at
+[http://localhost:8000/api/health/](http://localhost:8000/api/health/).
 
-Тесты запускаются на каждый коммит. За запуск отвечает файл `.github/workflows/hexlet-check.yml` — не удаляйте и не переименовывайте ни его, ни репозиторий.
+## Development
 
-</details>
+Run linters, format code, run tests, or run all required checks:
 
-## О Хекслете
-
-[Хекслет](https://ru.hexlet.io/) — школа программирования: авторские программы обучения с практикой, поддержкой наставников и реальными проектами, которые остаются в резюме. Этот репозиторий — один из таких проектов.
+```sh
+make lint
+make format
+make test
+make check
+```

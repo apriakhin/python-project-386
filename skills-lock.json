@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "django-expert": {
+      "source": "vintasoftware/django-ai-plugins",
+      "sourceType": "github",
+      "skillPath": "skills/django-expert/SKILL.md",
+      "computedHash": "496dca1506ff9a57fdfeddab3404995ecaf06874cf5a1fa815cd87a6d38621cd"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "b146008599c31057cef1c145774cea5d5afb30e8f43fa802e47a4b461419aaaf"
+    },
+    "pytest-skill": {
+      "source": "lambdatest/agent-skills",
+      "sourceType": "github",
+      "skillPath": "pytest-skill/SKILL.md",
+      "computedHash": "3fed1c57035b8d7759db6b5e200f9817049da97609789e6edcbd2607233574a9"
+    },
+    "rest-api-django": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "skillPath": "rest-api-django/SKILL.md",
+      "computedHash": "4e3ec03bbe446194761cf6d7c738ff981d09e1fcda00e038176069700a1f645f"
+    },
+    "shadcn": {
+      "source": "shadcn/ui",
+      "sourceType": "github",
+      "skillPath": "skills/shadcn/SKILL.md",
+      "computedHash": "f615de216e085a84e31593ad0fa9062232adc40cd87b7c7ab2b8e49abf6500be"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "computedHash": "ca7b0c0c6e5f2750043f7f0cd72d16ac4e2abc48f9b5500d047a4b77a2506212"
+    },
+    "vitest-skill": {
+      "source": "lambdatest/agent-skills",
+      "sourceType": "github",
+      "skillPath": "vitest-skill/SKILL.md",
+      "computedHash": "9cb1a9880a3d8763b93b8a83634ea31aca1d37ea1d8ca053e7b2c120f8594267"
+    }
+  }
+}

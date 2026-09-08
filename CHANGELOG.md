@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/apriakhin/python-project-386/compare/v1.0.0...v1.1.0) (2026-09-08)
+
+
+### Features
+
+* **frontend:** add calendar landing page ([df3b12b](https://github.com/apriakhin/python-project-386/commit/df3b12beab50e19cd759cdc6f8fa00bea1267843))
+
 ## 1.0.0 (2026-09-07)
 
 

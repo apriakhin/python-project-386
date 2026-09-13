@@ -1,4 +1,4 @@
-.PHONY: install dev dev-backend dev-frontend migrate start-backend test lint build check
+.PHONY: install dev dev-backend dev-frontend migrate start-backend test test-backend test-frontend lint build check
 
 install:
 	uv sync --directory backend --locked
@@ -19,8 +19,13 @@ migrate:
 start-backend:
 	uv run --directory backend gunicorn config.wsgi --bind 0.0.0.0:$${PORT:-8000}
 
-test:
+test: test-backend test-frontend
+
+test-backend:
 	uv run --directory backend pytest
+
+test-frontend:
+	npm --prefix frontend run test
 
 lint:
 	uv run --directory backend ruff check .

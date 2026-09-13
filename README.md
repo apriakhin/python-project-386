@@ -1,39 +1,86 @@
-# Календарь звонков
+### Hexlet tests and linter status:
 
+[![Actions Status](https://github.com/apriakhin/python-project-386/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/apriakhin/python-project-386/actions)
+[![CI Status](https://github.com/apriakhin/python-project-386/actions/workflows/ci.yml/badge.svg)](https://github.com/apriakhin/python-project-386/actions/workflows/ci.yml)
 
-[![hexlet-check](https://github.com/apriakhin/python-project-386/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/apriakhin/python-project-386/actions)
+# Call Calendar
 
-Разработайте совместно с ИИ сервис для бронирования календаря
+Call Calendar is a service for selecting available time slots and scheduling
+calls. The backend is built with Django, while the interface uses React,
+TypeScript, Vite, and Mantine.
 
-Учебный проект Хекслета: https://ru.hexlet.io/programs/python
-Как это должно работать: https://files.hexlet.app/a/2ipc5m
+## Install
 
-## Стек
+Python 3.14, Node.js 24, [uv](https://docs.astral.sh/uv/), and npm are
+required. The Python and Node.js versions are pinned in their respective
+project files.
 
-- Разное
+Clone the repository and install the dependencies:
 
-## Установка
-
-<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
-
-```bash
+```sh
 git clone https://github.com/apriakhin/python-project-386.git
 cd python-project-386
+make install
+cp backend/.env.example backend/.env
 ```
 
-## Использование
+Apply the database migrations:
 
-<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
+```sh
+make migrate
+```
 
----
+Start the backend and frontend together:
 
-<details>
-<summary>Автоматические тесты Хекслета</summary>
+```sh
+make dev
+```
 
-Тесты запускаются на каждый коммит. За запуск отвечает файл `.github/workflows/hexlet-check.yml` — не удаляйте и не переименовывайте ни его, ни репозиторий.
+To run them separately, use `make dev-backend` and `make dev-frontend` in
+different terminal sessions.
 
-</details>
+## Usage
 
-## О Хекслете
+Open [http://localhost:5173](http://localhost:5173) in a browser. The API
+health endpoint is available at
+[http://localhost:8000/api/health/](http://localhost:8000/api/health/).
 
-[Хекслет](https://ru.hexlet.io/) — школа программирования: авторские программы обучения с практикой, поддержкой наставников и реальными проектами, которые остаются в резюме. Этот репозиторий — один из таких проектов.
+## Checks
+
+Run the tests, linters, and production build:
+
+```sh
+make test
+make lint
+make build
+```
+
+The `make check` command runs the complete local CI suite. GitHub Actions runs
+the same checks on every push and pull request.
+
+## Environment
+
+Backend settings are loaded from `backend/.env`. SQLite is used by default for
+local development. Set `DATABASE_URL` to switch to PostgreSQL:
+
+```dotenv
+SECRET_KEY=replace-with-a-random-secret
+DEBUG=False
+DATABASE_URL=postgresql://user:password@host:5432/database
+ALLOWED_HOSTS=api.example.com
+```
+
+Cloud platforms should provide these values as environment variables instead
+of committing a `.env` file. Start the production server with:
+
+```sh
+PORT=8000 make start-backend
+```
+
+The server binds to `0.0.0.0` and uses the platform-provided `PORT` value.
+
+## Releases
+
+Release Please maintains a release PR based on
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). GitHub
+Actions must be allowed to create pull requests for this workflow to work.

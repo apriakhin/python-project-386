@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/apriakhin/python-project-386/compare/v1.0.0...v1.1.0) (2026-09-13)
+
+
+### Features
+
+* **frontend:** add Call Calendar landing page ([77b8e25](https://github.com/apriakhin/python-project-386/commit/77b8e2596113b3622291a12da1823841f686d959))
+
 ## 1.0.0 (2026-09-13)
 
 

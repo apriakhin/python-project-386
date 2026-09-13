@@ -31,3 +31,17 @@
 - Never commit local artifacts such as `.venv/`, `frontend/node_modules/`, `frontend/dist/`, caches, or `backend/db.sqlite3`.
 - Do not delete or modify `.github/workflows/hexlet-check.yml`.
 - Use Conventional Commits: `<type>[optional scope]: <description>`. Use `feat:` for features, `fix:` for fixes, and `!` or a `BREAKING CHANGE:` footer for breaking changes.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs live in this repo's GitHub Issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Triage uses the five default labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: one `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.

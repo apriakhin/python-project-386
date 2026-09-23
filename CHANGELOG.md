@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/apriakhin/python-project-386/compare/v1.1.0...v1.2.0) (2026-09-23)
+
+
+### Features
+
+* **api:** define Call Calendar contract and generated clients ([b59d118](https://github.com/apriakhin/python-project-386/commit/b59d118cbc3bd23ecc89daee6bcebcf35d441809))
+
 ## [1.1.0](https://github.com/apriakhin/python-project-386/compare/v1.0.0...v1.1.0) (2026-09-13)
 
 

@@ -5,14 +5,18 @@ requires-python = ">=3.14"
 dependencies = [
     "dj-database-url>=3.1.2",
     "django>=6.1,<6.2",
+    "email-validator>=2.3.0",
     "gunicorn>=26.2.0",
     "psycopg[binary]>=3.3.5",
+    "pydantic>=2.13.5",
     "python-dotenv>=1.2.3",
 ]
 
 [dependency-groups]
 dev = [
+    "datamodel-code-generator>=0.82.0",
     "pytest-django>=4.14.0",
+    "pyyaml>=6.0.3",
     "ruff>=0.16.7",
 ]
 

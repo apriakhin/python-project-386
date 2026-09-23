@@ -6,7 +6,7 @@
 # Call Calendar
 
 Call Calendar is a service for selecting available time slots and scheduling
-calls. The backend is built with Django, while the interface uses React,
+events. The backend is built with Django, while the interface uses React,
 TypeScript, Vite, and Mantine.
 
 ## Install

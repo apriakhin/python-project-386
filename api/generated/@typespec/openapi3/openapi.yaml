@@ -1,0 +1,231 @@
+openapi: 3.0.0
+info:
+  title: Call Calendar
+  version: 1.0.0
+tags: []
+paths:
+  /api/availability/:
+    get:
+      operationId: getAvailability
+      description: All 14 calendar dates, including dates without slots and occupied slots.
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Availability'
+  /api/bookings/:
+    post:
+      operationId: createBooking
+      description: Recheck the selected slot atomically; an unavailable slot returns 409.
+      parameters: []
+      responses:
+        '201':
+          description: The request has succeeded and a new resource has been created as a result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestBody'
+        '409':
+          description: The request conflicts with the current state of the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlotUnavailableBody'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingRequest'
+  /api/events/:
+    get:
+      operationId: listEvents
+      description: Future events, earliest first; pages contain at most 20 events.
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+          explode: false
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsPage'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestBody'
+components:
+  schemas:
+    Availability:
+      type: object
+      required:
+        - timezone
+        - dates
+      properties:
+        timezone:
+          type: string
+          enum:
+            - Europe/Moscow
+        dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/AvailabilityDate'
+          minItems: 14
+          maxItems: 14
+          description: Exactly 14 dates, from today in Moscow through the following 13 days.
+    AvailabilityDate:
+      type: object
+      required:
+        - date
+        - slots
+      properties:
+        date:
+          $ref: '#/components/schemas/MoscowDate'
+        slots:
+          type: array
+          items:
+            $ref: '#/components/schemas/Slot'
+    BookingRequest:
+      type: object
+      required:
+        - startAt
+        - name
+        - email
+      properties:
+        startAt:
+          $ref: '#/components/schemas/MoscowInstant'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: Trimmed before validation; whitespace-only names are invalid.
+        email:
+          type: string
+          maxLength: 254
+          format: email
+    ErrorDetail:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+        fieldErrors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    Event:
+      type: object
+      required:
+        - id
+        - name
+        - email
+        - startAt
+        - endAt
+        - createdAt
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        startAt:
+          $ref: '#/components/schemas/MoscowInstant'
+        endAt:
+          $ref: '#/components/schemas/MoscowInstant'
+        createdAt:
+          $ref: '#/components/schemas/MoscowInstant'
+    EventsPage:
+      type: object
+      required:
+        - items
+        - page
+        - pageSize
+        - total
+        - nextPage
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        page:
+          type: integer
+          format: int32
+        pageSize:
+          type: number
+          enum:
+            - 20
+        total:
+          type: integer
+          format: int32
+        nextPage:
+          type: integer
+          format: int32
+          nullable: true
+    InvalidRequestBody:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          enum:
+            - INVALID_REQUEST
+      allOf:
+        - $ref: '#/components/schemas/ErrorDetail'
+    MoscowDate:
+      type: string
+      format: date
+      description: Moscow calendar date (YYYY-MM-DD).
+    MoscowInstant:
+      type: string
+      pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?\+03:00$
+      description: ISO 8601 instant with the fixed Moscow offset.
+    Slot:
+      type: object
+      required:
+        - startAt
+        - endAt
+        - status
+      properties:
+        startAt:
+          $ref: '#/components/schemas/MoscowInstant'
+        endAt:
+          $ref: '#/components/schemas/MoscowInstant'
+        status:
+          type: string
+          enum:
+            - available
+            - busy
+    SlotUnavailableBody:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          enum:
+            - SLOT_UNAVAILABLE
+      allOf:
+        - $ref: '#/components/schemas/ErrorDetail'

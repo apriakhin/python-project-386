@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "generate:openapi": "tsp compile tsp/main.tsp --emit @typespec/openapi3 --output-dir ../api/generated",
+    "generate:sdk": "openapi-ts",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
@@ -20,12 +22,17 @@
     "react-router": "^8.3.1"
   },
   "devDependencies": {
+    "@hey-api/openapi-ts": "^0.99.0",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
+    "@typespec/compiler": "^1.16.0",
+    "@typespec/http": "^1.16.0",
+    "@typespec/openapi": "^1.16.0",
+    "@typespec/openapi3": "^1.16.0",
     "@vitejs/plugin-react": "^6.1.1",
     "jsdom": "^30.0.1",
     "oxlint": "^1.81.0",

@@ -30,6 +30,11 @@ Apply the database migrations:
 make migrate
 ```
 
+A data migration creates an editable daily availability schedule from
+09:00 to 18:00 Moscow time if the calendar has no schedule yet. Slots are
+calculated from that schedule; the public booking window is today plus 13 days.
+You can change or remove the intervals in Django admin.
+
 Start the backend and frontend together:
 
 ```sh

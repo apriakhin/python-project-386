@@ -33,7 +33,7 @@ def validate_request(request, *, body_model=None, query_parameters=()):
         if body_model.__name__ == "BookingRequest" and isinstance(body.get("name"), str):
             body["name"] = body["name"].strip()
         try:
-            body_model.model_validate(body)
+            validated = body_model.model_validate(body)
         except ValidationError as exc:
             errors = {}
             for detail in exc.errors():
@@ -48,6 +48,7 @@ def validate_request(request, *, body_model=None, query_parameters=()):
         # EmailStr normalizes addresses; the wire contract limits the original value.
         if body_model.__name__ == "BookingRequest" and len(body["email"]) > 254:
             return _invalid({"email": ["Must be at most 254 characters"]})
+        request.validated_body = validated
 
     for parameter in query_parameters:
         name = parameter["name"]

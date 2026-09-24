@@ -17,7 +17,9 @@ def get_availability(request):
     )
     if error is not None:
         return error
-    return JsonResponse({"message": "Not implemented"}, status=501)
+    from core.views import get_availability as handler
+
+    return handler(request)
 
 
 @csrf_exempt
@@ -31,7 +33,9 @@ def create_booking(request):
     )
     if error is not None:
         return error
-    return JsonResponse({"message": "Not implemented"}, status=501)
+    from core.views import create_booking as handler
+
+    return handler(request)
 
 
 def list_events(request):
@@ -50,4 +54,6 @@ def list_events(request):
     )
     if error is not None:
         return error
-    return JsonResponse({"message": "Not implemented"}, status=501)
+    from core.views import list_events as handler
+
+    return handler(request)

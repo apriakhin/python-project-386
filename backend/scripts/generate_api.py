@@ -75,7 +75,8 @@ def generate():
                     "    )",
                     "    if error is not None:",
                     "        return error",
-                    '    return JsonResponse({"message": "Not implemented"}, status=501)',
+                    f"    from core.views import {name} as handler",
+                    "    return handler(request)",
                     "",
                 ]
             )

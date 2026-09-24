@@ -12,7 +12,7 @@ export function PlaceholderPage({ title }: PlaceholderPageProps) {
         <Stack gap="md" align="center">
           <Title order={1}>{title}</Title>
           <Text c="dimmed">Скоро</Text>
-          <Anchor component={Link} to="/">
+          <Anchor component={Link} to="/" underline="never">
             На главную
           </Anchor>
         </Stack>

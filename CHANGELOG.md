@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/apriakhin/python-project-386/compare/v1.4.0...v1.4.1) (2026-09-24)
+
+
+### Bug Fixes
+
+* allow the checker host in ALLOWED_HOSTS ([adfc550](https://github.com/apriakhin/python-project-386/commit/adfc55074a048c86cb1dfc8f877ad414b2ce217c))
+
 ## [1.4.0](https://github.com/apriakhin/python-project-386/compare/v1.3.0...v1.4.0) (2026-09-24)
 
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.0](https://github.com/apriakhin/python-project-386/compare/v1.2.0...v1.3.0) (2026-09-24)
+
+
+### Features
+
+* **api:** implement booking and events endpoints ([c607890](https://github.com/apriakhin/python-project-386/commit/c607890ad2391f8f1ad525cac290fca326341061))
+* **backend:** add calendar models and admin ([6c703dd](https://github.com/apriakhin/python-project-386/commit/6c703ddf08db6bebb2e38de478f3df58555d1af8))
+* **frontend:** build booking and event flows ([902b745](https://github.com/apriakhin/python-project-386/commit/902b745391f18ffe4868bf7b376d289756c45e71))
+
 ## [1.2.0](https://github.com/apriakhin/python-project-386/compare/v1.1.0...v1.2.0) (2026-09-23)
 
 

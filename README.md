@@ -9,6 +9,8 @@ Call Calendar is a service for selecting available time slots and scheduling
 events. The backend is built with Django, while the interface uses React,
 TypeScript, Vite, and Mantine.
 
+Live demo: <https://python-project-386-jdwc.onrender.com>
+
 ## Install
 
 Python 3.14, Node.js 24, [uv](https://docs.astral.sh/uv/), and npm are

@@ -84,6 +84,27 @@ PORT=8000 make start-backend
 
 The server binds to `0.0.0.0` and uses the platform-provided `PORT` value.
 
+## Docker
+
+The multi-stage `Dockerfile` builds the frontend with Node.js and packages the
+Django backend with Gunicorn. At startup the container applies migrations,
+collects static files, and serves the API and the compiled frontend (including
+the `/book` and `/events` routes) from a single origin on `PORT`:
+
+```sh
+docker build -t call-calendar .
+docker run --rm -p 8000:8000 \
+  -e PORT=8000 \
+  -e SECRET_KEY=replace-with-a-random-secret \
+  -e DEBUG=False \
+  -e DATABASE_URL=postgresql://user:password@host:5432/database \
+  call-calendar
+```
+
+Open [http://localhost:8000](http://localhost:8000) to reach the app. Cloud
+platforms set `PORT` and `DATABASE_URL` for you; `RENDER_EXTERNAL_HOSTNAME` is
+picked up automatically when running on Render.
+
 ## Releases
 
 Release Please maintains a release PR based on

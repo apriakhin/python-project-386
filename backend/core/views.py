@@ -1,6 +1,8 @@
 from datetime import datetime
+from pathlib import Path
 
-from django.http import JsonResponse
+from django.conf import settings
+from django.http import Http404, HttpResponse, JsonResponse
 from django.utils import timezone
 
 from .calendar import availability, book, public_event
@@ -9,6 +11,13 @@ from .models import Event
 
 def health(request):
     return JsonResponse({"status": "ok"})
+
+
+def spa(request):
+    index = Path(settings.FRONTEND_DIST) / "index.html"
+    if not index.is_file():
+        raise Http404("Frontend build not found")
+    return HttpResponse(index.read_bytes(), content_type="text/html")
 
 
 def get_availability(request):

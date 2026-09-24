@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/apriakhin/python-project-386/compare/v1.3.0...v1.4.0) (2026-09-24)
+
+
+### Features
+
+* add Docker image and production server ([07016ad](https://github.com/apriakhin/python-project-386/commit/07016adb70b638fbd7653bf9b8a924d134db5620))
+
 ## [1.3.0](https://github.com/apriakhin/python-project-386/compare/v1.2.0...v1.3.0) (2026-09-24)
 
 
